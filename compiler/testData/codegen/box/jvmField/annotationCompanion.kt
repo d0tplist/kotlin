@@ -1,3 +1,4 @@
+// IGNORE_BACKEND: JVM_IR
 // !LANGUAGE: +JvmFieldInInterface +NestedClassesInAnnotations
 // TARGET_BACKEND: JVM
 
