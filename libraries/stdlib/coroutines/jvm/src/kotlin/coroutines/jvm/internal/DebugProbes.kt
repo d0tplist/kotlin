@@ -38,6 +38,7 @@ import kotlin.coroutines.intrinsics.*
  * with a reference to the same frame. However, while coroutine is running it can unwind its frames and
  * invoke other suspending functions, so its next suspension can happen with a different frame pointer.
  */
+@SinceKotlin("1.3")
 internal fun <T> probeCoroutineCreated(completion: Continuation<T>): Continuation<T> {
     /** implementation of this function is replaced by debugger */
     return completion
@@ -52,6 +53,7 @@ internal fun <T> probeCoroutineCreated(completion: Continuation<T>): Continuatio
  * [BaseContinuationImpl] class, despite the fact that the declared type of [frame]
  * parameter in this function is `Continuation<*>`. See [probeCoroutineCreated] for details.
  */
+@SinceKotlin("1.3")
 internal fun probeCoroutineResumed(frame: Continuation<*>) {
     /** implementation of this function is replaced by debugger */
 }
@@ -66,6 +68,7 @@ internal fun probeCoroutineResumed(frame: Continuation<*>) {
  * [BaseContinuationImpl] class, despite the fact that the declared type of [frame]
  * parameter in this function is `Continuation<*>`. See [probeCoroutineCreated] for details.
  */
+@SinceKotlin("1.3")
 internal fun probeCoroutineSuspended(frame: Continuation<*>) {
     /** implementation of this function is replaced by debugger */
 }
