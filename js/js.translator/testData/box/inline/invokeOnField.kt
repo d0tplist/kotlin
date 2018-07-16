@@ -3,23 +3,25 @@ class Bar {
     inline operator fun invoke(f: () -> String) { f() }
 }
 
+class Baz
+inline operator fun Baz.invoke(f: () -> String) { f() }
+
 class Foo {
     val bar = Bar()
+    val baz = Baz()
 }
 
-//inline operator fun Bar.invoke(f: () -> String) { f() }
-
-fun fox(): String {
-    Bar()() { return "OK" }
-    return "fail"
+fun testDispatch(foo: Foo): String {
+    foo.bar { return "O" }
+    return "FailDispatch;"
 }
 
-fun bax(): String {
-    Foo().bar() { return "OK" }
-    return "fail"
+fun testExtension(foo: Foo): String {
+    foo.baz { return "K" }
+    return "FailExtension;"
 }
 
 fun box(): String {
-    Foo().bar { return "OK" }
-    return "fail"
+    val f = Foo()
+    return testDispatch(f) + testExtension(f)
 }
