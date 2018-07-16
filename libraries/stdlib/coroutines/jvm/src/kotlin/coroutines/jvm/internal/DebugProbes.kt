@@ -15,7 +15,7 @@ import kotlin.coroutines.intrinsics.*
  * This probe is invoked from stdlib implementation of [createCoroutineUnintercepted] function.
  *
  * Once created, coroutine is repeatedly [resumed][probeCoroutineResumed] and [suspended][probeCoroutineSuspended],
- * until it complete. On completion, the object that was returned by this probe is invoked.
+ * until it is complete. On completion, the object that was returned by this probe is invoked.
  *
  * ```
  * +-------+  probeCoroutineCreated +-----------+
@@ -28,7 +28,7 @@ import kotlin.coroutines.intrinsics.*
  *                                  +------------+                     +-----------+
  * ```
  *
- * Whine the coroutine is resumed and suspended, it is represented by the pointer to its `frame`
+ * While the coroutine is resumed and suspended, it is represented by the pointer to its `frame`
  * which always extends [BaseContinuationImpl] and represents a pointer to the topmost frame of the
  * coroutine. Each [BaseContinuationImpl] object has [completion][BaseContinuationImpl.completion] reference
  * that points either to another frame (extending [BaseContinuationImpl]) or to the completion object
